@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberSQL">
+
+<insert id="signUpMember" parameterType="java.util.Map"> 
+ 		insert into namane_member values(#{name},#{id},#{pwd},#{email},#{tel},sysdate)
+</insert>
+
+<select id="loginMember" parameterType="java.util.Map" resultType="member"> 
+ 		select * from namane_member where id=#{id} and pwd=#{pwd}
+</select>
+
+<select id="checkIdMember" parameterType="java.lang.String" resultType="member"> 
+ 		select * from namane_member where id=#{id}
+</select>
+
+
+<update id="updateMember" parameterType="java.util.Map"> 
+ 		update namane_member set name=#{name}, pwd=#{pwd}, email=#{email}, tel=#{tel} where id=#{id} 
+</update>
+
+<!-- 아이디 찾기 -->
+<select id="findIdMember" parameterType="java.util.Map" resultType="member"> 
+ 		select * from namane_member where name=#{name} and email=#{email}
+</select>
+
+<!-- 비밀번호 찾기 -->
+<select id="findPwdMember" parameterType="java.util.Map" resultType="member"> 
+ 		select * from namane_member where id=#{id} and email=#{email}
+</select>
+
+</mapper>
