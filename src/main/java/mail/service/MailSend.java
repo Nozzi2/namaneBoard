@@ -55,10 +55,10 @@ public class MailSend {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
  
             // Subject
-            message.setSubject("제목 잘 지어졌냐?");
+            message.setSubject("Namane Board 비밀번호 입니다.");
  
             // Text
-            message.setText("내용 잘 지어졌냐? ["+code+"]");
+            message.setText("비밀번호는 ["+code+"] 입니다.");
  
             Transport.send(message);    // send message
  

@@ -22,7 +22,7 @@ div {
 			<td>
 				<input type="text" name="id_signup" id="id_signup" placeholder="아이디 입력">
 				<input type="text" name="checkedId_signup" id="checkedId_signup" style="display:none;" readonly>
-				<input type="button" value="중복체크" onclick="checkId()">
+				<!-- <input type="button" value="중복체크" onclick="checkId()"> -->
 				<div id="idDiv_signup"></div>
 	   		</td>
 		</tr>
@@ -84,6 +84,47 @@ div {
 	</table>
 	
 	<br><br><input type="button" value="시작 페이지" onclick="location.href='/namaneBoard/index.jsp'">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/namaneBoard/script/member.js"></script>
+<script type="text/javascript">
+$('#id_signup').focusout(function(){
+	if($('#id_signup').val() == ''){
+		$('#idDiv_signup').html("먼저 아이디 입력");
+		$('#idDiv_signup').css('color', 'red');
+		$('#idDiv_signup').css('font-size', '8pt');
+		$('#idDiv_signup').css('font-weight', 'bold');
+	} else {
+		$('#idDiv_signup').html('');
+		$.ajax({
+			url: '/namaneBoard/member/memberCheckId.do',
+			type: 'post',
+			data: {
+				'id' : $('#id_signup').val()
+			},
+			dataType: 'text',
+			success: function(data){
+				data = data.trim();
+				if(data != 'fail'){
+					$('#idDiv_signup').html("중복된 아이디입니다.");
+					$('#idDiv_signup').css('color', 'red');
+					$('#idDiv_signup').css('font-size', '8pt');
+					$('#idDiv_signup').css('font-weight', 'bold');
+				} else {
+					$('input[name="checkedId_signup"]').val($('#id_signup').val());
+					
+					$('#idDiv_signup').html("사용 가능합니다.");
+					$('#idDiv_signup').css('color', 'blue');
+					$('#idDiv_signup').css('font-size', '8pt');
+					$('#idDiv_signup').css('font-weight', 'bold');
+				}
+			},
+			error: function(err){
+				console.log(err);
+			}
+		});
+	}
+});
+
+</script>
 </body>
 </html>

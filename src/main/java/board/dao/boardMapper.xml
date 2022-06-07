@@ -4,6 +4,37 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardSQL">
 
-	<!-- 여기에 SQL문 만들어서 넣으면 된다. -->
-
+	<insert id="writeBoard" parameterType="java.util.Map"> 
+	 	insert into namane_board(seq, id, subject, content, ref, cate)
+	 			values(	seq_namaneBoard.nextval
+	 					,#{id}
+	 					,#{subject}
+	 					,#{content}
+	 					,seq_namaneBoard.currval
+	 					,#{cate}
+	 				  )
+	</insert>
+	
+	<select id="getAllList" resultType="board">
+		select * from namane_board order by seq desc
+	</select>
+	
+	<select id="readBoard" parameterType="int" resultType="board">
+		select * from namane_board where seq=#{seq}
+	</select>
+	
+	
+ 	<select id="getBoardList" parameterType="java.util.Map" resultType="board"> 
+		select * from
+			(select rownum rn, tt.* from
+			(select * from namane_board order by ref desc, step asc)tt)
+			where rn between #{startNum} and #{endNum}
+ 	</select>
+ 	
+ 	<select id="getTotalA" resultType="board">
+ 		select count(*) as seq from namane_board
+ 	</select>
+ 	
+	
+	
 </mapper>

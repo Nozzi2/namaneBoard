@@ -10,9 +10,11 @@ public class BoardDTO {
 	
 	private int ref;
 	private int lev;
+	private int step;
 	private int pseq;
+	private String del;
 	
-	private int recnt;
+	private int recnt; //댓글 갯수
 	private int boomup;
 	private int cate;
 	private int hit;
@@ -114,6 +116,22 @@ public class BoardDTO {
 
 	public void setLogtime(Date logtime) {
 		this.logtime = logtime;
+	}
+
+	public int getStep() {
+		return step;
+	}
+
+	public void setStep(int step) {
+		this.step = step;
+	}
+
+	public String getDel() {
+		return del;
+	}
+
+	public void setDel(String del) {
+		this.del = del;
 	}
 	
 	

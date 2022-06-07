@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:if test="${requestScope.memberDTO == null}">
+	fail
+</c:if>
+<%-- 
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +12,7 @@
 <title>아이디 중복 확인</title>
 </head>
 <body>
+
 	<form name="MemberCheckIdPopup" id="MemberCheckIdPopup" method="get" action="/namaneBoard/member/memberCheckId.do">
 		<c:if test="${requestScope.result == 1}">
 			<h3>${requestScope.id } 는 <font color="blue">사용 가능</font>합니다.<br></h3>
@@ -21,6 +26,7 @@
 			<div id="idDiv_popup"></div>
 		</c:if>
 	</form>
+	
 
 <script type="text/javascript" src="/namaneBoard/script/member.js"></script>
 <script type="text/javascript">
@@ -33,3 +39,4 @@ function checkIdClose(id){
 </script>
 </body>
 </html>
+ --%>

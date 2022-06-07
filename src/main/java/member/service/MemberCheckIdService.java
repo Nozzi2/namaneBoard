@@ -16,18 +16,22 @@ public class MemberCheckIdService implements CommandProcess {
 		System.out.println("MemberCheckIdService로 넘어오나? id : "+id);
 		MemberDAO memberDAO = new MemberDAO();
 		MemberDTO memberDTO = memberDAO.checkIdMember(id);
-		int result = 1;
+//		int result = 1;
+//		
+//		if(memberDTO != null) {
+//			System.out.println("중복된거 있음 ㅡ,.ㅡ");
+//			result = 0;
+//		} else {
+//			System.out.println("중복된거 없음 ^-^");
+//			result = 1;
+//			request.setAttribute("id", id);
+//		}
+//		
+//		request.setAttribute("result", result);
 		
-		if(memberDTO != null) {
-			System.out.println("중복된거 있음 ㅡ,.ㅡ");
-			result = 0;
-		} else {
-			System.out.println("중복된거 없음 ^-^");
-			result = 1;
-			request.setAttribute("id", id);
-		}
 		
-		request.setAttribute("result", result);
+		
+		request.setAttribute("memberDTO", memberDTO);
 		return "/member/memberCheckId.jsp";
 	}
 

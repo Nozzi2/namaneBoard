@@ -17,9 +17,9 @@ public class MemberFindPwdService implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 
-		String id = request.getParameter("name_findpwd");
-		String email = request.getParameter("email_findpwd");
-		
+		String id = request.getParameter("id");
+		String email = request.getParameter("email");
+		System.out.println(id+email);
 		Map<String,String> map = new HashMap<>();
 		map.put("id", id);
 		map.put("email", email);

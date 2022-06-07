@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:if test="${requestScope.memberDTO == null }">
+	fail
+</c:if>
+<%-- <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -9,12 +13,12 @@
 <body>
 <c:if test="${requestScope.memberDTO != null }">
 	입력하신 이메일로 비밀번호를 보내드렸습니다.<br>
-	<input type="button" value="로그인" onclick="location.href='/namaneBoard/memberLoginForm.do'">
+	<input type="button" value="로그인" onclick="location.href='/namaneBoard/member/memberLoginForm.do'">
 </c:if>
 <c:if test="${requestScope.memberDTO == null }">
 	입력하신 정보와 일치하는 아이디가 없습니다.<br>
-	<input type="button" value="비밀번호 찾기" onclick="location.href='/namaneBoard/memberFindPwdForm.do'">
+	<input type="button" value="비밀번호 찾기" onclick="location.href='/namaneBoard/member/memberFindPwdForm.do'">
 </c:if>
 <br><br><input type="button" value="시작 페이지" onclick="location.href='/namaneBoard/index.jsp'">
 </body>
-</html>
+</html> --%>

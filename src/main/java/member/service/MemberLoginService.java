@@ -16,8 +16,8 @@ public class MemberLoginService implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
-		String pwd = request.getParameter("pwd_login");
-		String id = request.getParameter("id_login");
+		String pwd = request.getParameter("pwd");
+		String id = request.getParameter("id");
 		
 		Map<String,String> map = new HashMap<>();
 		map.put("id", id);
@@ -26,14 +26,12 @@ public class MemberLoginService implements CommandProcess {
 		MemberDAO memberDAO = new MemberDAO();
 		MemberDTO memberDTO = memberDAO.loginMember(map);
 		
-		if(memberDTO == null) {
-			return "/member/memberLoginFail.jsp";
-		} else {
+		if(memberDTO != null) {
 			HttpSession session = request.getSession(); //세션 생성
 			session.setAttribute("memberDTO", memberDTO);
-			return "/member/memberLoginOk.jsp";
 		}
-				
-		
+
+		return "/member/memberLoginFail.jsp";
+		//memberLoginFail.jsp는 로그인 결과가 fail이 아니라 Ok인지 fail인지 알려주는 jsp이다.
 	}
 }

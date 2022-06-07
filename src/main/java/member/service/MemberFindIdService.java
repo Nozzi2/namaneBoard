@@ -15,8 +15,8 @@ public class MemberFindIdService implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {		
-		String name = request.getParameter("name_findid");
-		String email = request.getParameter("email_findid");
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
 		
 		Map<String,String> map = new HashMap<>();
 		map.put("name", name);

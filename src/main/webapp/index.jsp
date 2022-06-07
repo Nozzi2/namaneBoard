@@ -26,7 +26,9 @@
 	<input  type="button" value="회원정보 수정"
 			onclick="location.href='/namaneBoard/member/memberUpdateForm.do'">
 </c:if>
-
+<br>
+<input  type="button" value="게시판"
+			onclick="location.href='/namaneBoard/board/boardList.do?pg=1'">
 
 </body>
 </html>
