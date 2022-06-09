@@ -77,4 +77,12 @@ public class BoardDAO {
 	}//getTotalA()
 
 
+	public void setHit(int seq) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(); //생성
+		sqlSession.update("boardSQL.setHit", seq);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+
+
 }

@@ -35,6 +35,10 @@
  		select count(*) as seq from namane_board
  	</select>
  	
+ 	<update id="setHit" parameterType="int"> 
+ 		UPDATE namane_board SET hit = hit+1 WHERE seq = #{value}
+ 	</update> 
+ 	
 	
 	
 </mapper>
